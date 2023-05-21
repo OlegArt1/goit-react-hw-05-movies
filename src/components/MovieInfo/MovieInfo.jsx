@@ -41,9 +41,9 @@ const MovieInfo = ({ movieInfo }) =>
                     <MoviePageBlock>
                         <MovieLabel>
                             {releaseDate.getFullYear() !== 'NaN' ?
-                            <MovieNameText>{title + " " + '(' + releaseDate.getFullYear() + ')'}.</MovieNameText>
+                            <MovieNameText>{title} {releaseDate.getFullYear()}.</MovieNameText>
                             :
-                            <MovieNameText>{title + "(-)"}.</MovieNameText>}
+                            <MovieNameText>{title} {"(-)"}.</MovieNameText>}
                         </MovieLabel>
                     </MoviePageBlock>
                     <MoviePageBlock>
