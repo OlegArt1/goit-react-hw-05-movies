@@ -41,7 +41,7 @@ const MovieCast = () =>
             {
                 console.log("\n Error - ", error.message + ";");
 
-                alert("Error! Status code 404!");
+                alert("Error! Network error!");
             }
         }        
         fetchDownloadAllMovieCast();

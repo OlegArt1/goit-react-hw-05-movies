@@ -36,6 +36,8 @@ const Home = () =>
         catch (error)
         {
             console.log("\nError - ", error.message + ";");
+
+            alert("Error! Network error!");
         }
         finally
         {

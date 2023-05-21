@@ -35,7 +35,7 @@ const MovieReviews = () =>
             {
                 console.log("\nError - ", error.message + ";");
 
-                alert("Error! Status code 404!");
+                alert("Error! Network error!");
             }
         }        
         fetchDownloadAllMovieReview();

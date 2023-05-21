@@ -38,8 +38,10 @@ const Movies = () =>
 
     useEffect(() =>
     {
-        if (searchQuery === '') return;
-
+        if (searchQuery === null)
+        {
+            return;
+        }
         getMovie(searchQuery);
 
     }, [searchQuery]);
