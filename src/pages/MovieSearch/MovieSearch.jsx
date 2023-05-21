@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useLocation } from "react-router-dom";
+import { useSearchParams, useLocation } from "react-router-dom";
 import { fetchMoviesSearch } from "services/Api";
 import
 {
@@ -29,15 +29,20 @@ from "../MovieDetails/MovieDelails.styled";
 const Movies = () =>
 {
     const [movies, setMovies] = useState([]);
-    const [search, setSearch] = useState('');
+    
+    const [searchParams, setSearchParams] = useSearchParams();
   
+    const searchQuery = searchParams.get("query");
+
     const location = useLocation();
 
     useEffect(() =>
     {
-        getMovie(search);
+        if (searchQuery === '') return;
 
-    }, [search]);
+        getMovie(searchQuery);
+
+    }, [searchQuery]);
 
     const getMovie = async (text) =>
     {
@@ -60,19 +65,19 @@ const Movies = () =>
     {
         e.preventDefault();
 
-        const searchText = e.target.elements.query.value;
+        const form = e.currentTarget;
 
-        if (!searchText)
+        if (!form)
         {
             alert('Empty column! Fill in the search column!');
       
             return;
         }
-        setSearch(searchText);
-
+        setSearchParams({ query: form.elements.query.value });
+        
         setMovies([]);
 
-        e.target.reset();
+        form.reset();
     }
     return (
         <main>
