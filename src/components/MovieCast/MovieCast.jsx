@@ -29,25 +29,25 @@ const MovieCast = () =>
 
     useEffect(() =>
     {
+        const fetchDownloadAllMovieCast = async () =>
+        {
+            try
+            {
+                const response = await fetchMoviesCasts(movieId);
+
+                setCast(response.cast);
+            }
+            catch (error)
+            {
+                console.log("\n Error - ", error.message + ";");
+
+                alert("Error! Status code 404!");
+            }
+        }        
         fetchDownloadAllMovieCast();
 
     }, [movieId]);
 
-    const fetchDownloadAllMovieCast = async () =>
-    {
-        try
-        {
-            const response = await fetchMoviesCasts(movieId);
-
-            setCast(response.cast);
-        }
-        catch (error)
-        {
-            console.log("\n Error - ", error.message + ";");
-
-            alert("Error! Status code 404!");
-        }
-    }
     return (
         <Cast>
             {cast.length !== 0 ?
